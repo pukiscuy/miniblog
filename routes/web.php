@@ -21,5 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/create', 'HomeController@create')->name('create');
-Route::get('/edit', 'HomeController@edit')->name('edit');
-Route::get('/delete', 'HomeController@delete')->name('delete');
+Route::post('/create', 'HomeController@postCreate')->name('post-create');
+Route::get('/edit/{id}', 'HomeController@edit')->name('edit');
+Route::post('/edit', 'HomeController@postEdit')->name('post-edit');
+Route::get('/delete/{id}', 'HomeController@delete')->name('delete');

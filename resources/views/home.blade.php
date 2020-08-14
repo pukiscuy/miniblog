@@ -8,12 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
+                  
                     <div class="row">
                         <div class="col-md-12">
                             <a href="{{url('create')}}" class="btn btn-primary">Add New</a>
@@ -30,15 +25,17 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach($data as $key=>$val)
                                 <tr>
-                                  <th scope="row">1</th>
-                                  <td>Judul Blog</td>
-                                  <td>Lorem ipsum</td>
+                                  <th scope="row">{{$key+1}}</th>
+                                  <td>{{$val->title}}</td>
+                                  <td>{{$val->description}}</td>
                                   <td>
-                                     <a href="" class="btn btn-primary">Edit</a>
-                                     <a href="" class="btn btn-danger">delete</a>
+                                     <a href="{{url('edit/'.$val->id)}}" class="btn btn-primary">Edit</a>
+                                     <a href="{{url('delete/'.$val->id)}}" class="btn btn-danger">delete</a>
                                   </td>
                                 </tr>
+                                @endforeach
                               </tbody>
                             </table>
                         </div>
